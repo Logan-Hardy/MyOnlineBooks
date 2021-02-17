@@ -15,6 +15,7 @@ something similar in just a few weeks using ASP.NET Core MVC over the course of 
 few assignments. This assignment focuses on creating the database portion of the web app.
 Create a web app for an online bookstore. For each book, we want to store the following
 information:
+
 • Title
 • Author
 • Publisher
