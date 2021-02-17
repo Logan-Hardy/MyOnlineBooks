@@ -29,96 +29,119 @@ namespace MyOnlineBooks.Models
                     new Book
                     {
                         BookTitle = "Les Miserables",
-                        BookAuthor = "Victor Hugo",
+                        BookAuthorFirstName = "Victor",
+                        BookAuthorLastName = "Hugo",
                         BookPublisher = "Signet",
                         BookISBN = "978-0451419439",
-                        BookCategory = "Fiction, Classic",
+                        BookClassification = "Fiction",
+                        BookCategory = "Classic",
                         BookPrice = 9.95
                     },
                     new Book
                     {
                         BookTitle = "Team of Rivals",
-                        BookAuthor = "Doris Kearns Goodwin",
+                        BookAuthorFirstName = "Doris",
+                        BookAuthorMiddleName = "Kearnes",
+                        BookAuthorLastName = "Goodwin",
                         BookPublisher = "Simon & Schuster",
                         BookISBN = "978-0743270755",
-                        BookCategory = "Non-Fiction, Biography",
+                        BookClassification = "Non-Fiction",
+                        BookCategory = "Biography",
                         BookPrice = 14.58
                     },
                     new Book
                     {
                         BookTitle = "The Snowball",
-                        BookAuthor = "Alice Schroeder",
+                        BookAuthorFirstName = "Alice",
+                        BookAuthorLastName = "Schroeder",
                         BookPublisher = "Bantam",
                         BookISBN = "978-0553384611",
-                        BookCategory = "Non-Fiction, Biography",
+                        BookClassification = "Non-Fiction",
+                        BookCategory = "Biography",
                         BookPrice = 21.54
                     },
                     new Book
                     {
                         BookTitle = "American Ulysses",
-                        BookAuthor = "Ronald C. White",
+                        BookAuthorFirstName = "Ronald",
+                        BookAuthorMiddleName = "C.",
+                        BookAuthorLastName = "White",
                         BookPublisher = "Random House",
                         BookISBN = "978-0812981254",
-                        BookCategory = "Non-Fiction, Biography",
+                        BookClassification = "non-Fiction",
+                        BookCategory = "Biography",
                         BookPrice = 11.61
                     },
                     new Book
                     {
                         BookTitle = "Unbroken",
-                        BookAuthor = "Laura HillenBrand",
+                        BookAuthorFirstName = "Laura",
+                        BookAuthorLastName = "HillenBrand",
                         BookPublisher = "Random House",
                         BookISBN = "978-0812974492",
-                        BookCategory = "Non-Fiction, Historical",
+                        BookClassification = "Non-Fiction",
+                        BookCategory = "Historical",
                         BookPrice = 13.33
                     },
                     new Book
                     {
                         BookTitle = "The Great Train Robbery",
-                        BookAuthor = "Michael Crichton",
+                        BookAuthorFirstName = "Michael",
+                        BookAuthorLastName = "Crichton",
                         BookPublisher = "Vintage",
                         BookISBN = "978-0804171281",
-                        BookCategory = "Fiction, Historical Fiction",
+                        BookClassification = "Fiction",
+                        BookCategory = "Historical Fiction",
                         BookPrice = 15.95
                     },
                     new Book
                     {
                         BookTitle = "Deep Work",
-                        BookAuthor = "Cal Newport",
+                        BookAuthorFirstName = "Cal",
+                        BookAuthorLastName = "Newport",
                         BookPublisher = "Grand Central Publishing",
                         BookISBN = "978-1455586691",
-                        BookCategory = "Non-Fiction, Self-Help",
+                        BookClassification = "Non-Fiction",
+                        BookCategory = "Self-Help",
                         BookPrice = 14.99
                     },
                     new Book
                     {
                         BookTitle = "It's Your Ship",
-                        BookAuthor = "Michael Abrashoff",
+                        BookAuthorFirstName = "Michael",
+                        BookAuthorLastName = "Abrashoff",
                         BookPublisher = "Grand Central Publishing",
                         BookISBN = "978-1455523023",
-                        BookCategory = "Non-Fiction, Self-Help",
+                        BookClassification = "Non-Fiction",
+                        BookCategory = "Self-Help",
                         BookPrice = 21.66
                     },
                     new Book
                     {
                         BookTitle = "The Virgin Way",
-                        BookAuthor = "Richard Branson",
+                        BookAuthorFirstName = "Richard",
+                        BookAuthorLastName = "Branson",
                         BookPublisher = "Portfolio",
                         BookISBN = "978-1591847984",
-                        BookCategory = "Non-Fiction, Business",
+                        BookClassification = "Non-Fiction",
+                        BookCategory = "Business",
                         BookPrice = 29.16
                     },
                     new Book
                     {
                         BookTitle = "Sycamore Row",
-                        BookAuthor = "John Grisham",
+                        BookAuthorFirstName = "John",
+                        BookAuthorLastName = "Grisham",
                         BookPublisher = "Bantam",
                         BookISBN = "978-0553393613",
-                        BookCategory = "Fiction, Thrillers",
+                        BookClassification = "Fiction",
+                        BookCategory = "Thrillers",
                         BookPrice = 15.03
                     }
 
                  );
 
+                //save any changes
                 context.SaveChanges();
             }
         }

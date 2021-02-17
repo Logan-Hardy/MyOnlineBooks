@@ -65,7 +65,7 @@ namespace MyOnlineBooks
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-
+            //Seed data (list of 10 hardcoded books and their information) 
             SeedData.EnsurePopulated(app);
         }
     }

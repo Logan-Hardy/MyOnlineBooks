@@ -9,7 +9,7 @@ using MyOnlineBooks.Models;
 namespace MyOnlineBooks.Migrations
 {
     [DbContext(typeof(OnlineBooksDBContext))]
-    [Migration("20210216203846_Initial")]
+    [Migration("20210217163721_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,22 @@ namespace MyOnlineBooks.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BookAuthor")
+                    b.Property<string>("BookAuthorFirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BookAuthorLastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookAuthorMiddleName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BookCategory")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookClassification")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

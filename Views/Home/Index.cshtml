@@ -1,34 +1,44 @@
 ﻿@{
+    //Logan Hardy 
+    //IS 413 
+    //Assignment 5
+    //17 Feb 2021
     ViewBag.Title = "Welcome To Logan's Online Bookstore!";
 }
 
 @model IQueryable<Book>
 
+<!--Bootstrap is used to center and format the title of the page-->
 <div class="text-center">
     <h1 class="display-4">@ViewBag.Title</h1>
     <br />
     <br />
 </div>
-
+<!--Bootstrap is used to add borders around the table and alternate stripes, or colors, for each row-->
 <table class="table table-bordered table-striped">
     <tr>
+        <!--Table headers-->
         <th>Title</th>
-        <th>Author</th>
+        <th>Author's Name</th>
         <th>Publisher</th>
         <th>ISBN</th>
-        <th>Classification/Category</th>
+        <th>Classification</th>
+        <th>Category</th>
         <th>Price</th>
     </tr>
+    <!--for each book, display the book information on a seperate row in the table -->
     @foreach (var oBook in Model)
     {
-        <tr>
-            <td>@oBook.BookTitle</td>
-            <td>@oBook.BookAuthor</td>
-            <td>@oBook.BookPublisher</td>
-            <td>@oBook.BookISBN</td>
-            <td>@oBook.BookCategory</td>
-            <td>@oBook.BookPrice</td>
-        </tr>
+<tr>
+    <td>@oBook.BookTitle</td>
+    <!--Display Author's first, middle, and last names in the same cell-->
+    <td>@oBook.BookAuthorFirstName @oBook.BookAuthorMiddleName @oBook.BookAuthorLastName</td>
+    <td>@oBook.BookPublisher</td>
+    <td>@oBook.BookISBN</td>
+    <td>@oBook.BookClassification</td>
+    <td>@oBook.BookCategory</td>
+    <td>$@oBook.BookPrice</td>
+</tr>
     }
 
 </table>

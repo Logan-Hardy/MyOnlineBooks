@@ -9,11 +9,12 @@ namespace MyOnlineBooks.Models
     {
         private OnlineBooksDBContext _context;
 
-        //Constructor 
+        //Empty Constructor 
         public EFBooksRepository()
         {
 
         }
+        //Contsructor that receives an OnlineBooksDBContext object as a parameter and sets context to the private variable
         public EFBooksRepository (OnlineBooksDBContext context)
         {
             _context = context;

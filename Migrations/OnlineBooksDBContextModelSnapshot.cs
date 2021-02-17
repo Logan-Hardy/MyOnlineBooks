@@ -25,11 +25,22 @@ namespace MyOnlineBooks.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BookAuthor")
+                    b.Property<string>("BookAuthorFirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BookAuthorLastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookAuthorMiddleName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BookCategory")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookClassification")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
