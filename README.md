@@ -24,6 +24,8 @@ information:
 • Price
 
 
+
+
 All fields are required. Use the “Model First” approach described in the videos to set up and
 create the database that we will use for the app. The ISBN needs to be entered in a valid format.
 Include a “BookId” field that can be used as a primary key. Use good normalization principles
