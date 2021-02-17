@@ -17,6 +17,7 @@ namespace MyOnlineBooks.Models
         [Key]
         //BookId is the primary key
         public int BookId { get; set; }
+
         [Required]
         public string BookTitle { get; set; }
         [Required]
@@ -28,6 +29,7 @@ namespace MyOnlineBooks.Models
         [Required]
         public string BookPublisher { get; set; }
         [Required]
+        [MaxLength(14)]
         //BookISBN must be entered in the following format: XXX-XXXXXXXXXX
         [RegularExpression("^([0-9]{3}-[0-9]{10})$", ErrorMessage = "Please enter a valid ISBN with a hyphin: XXX-XXXXXXXXXX")]
         public string BookISBN { get; set; }

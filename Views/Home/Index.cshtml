@@ -29,16 +29,16 @@
     <!--for each book, display the book information on a seperate row in the table -->
     @foreach (var oBook in Model)
     {
-<tr>
-    <td>@oBook.BookTitle</td>
-    <!--Display Author's first, middle, and last names in the same cell-->
-    <td>@oBook.BookAuthorFirstName @oBook.BookAuthorMiddleName @oBook.BookAuthorLastName</td>
-    <td>@oBook.BookPublisher</td>
-    <td>@oBook.BookISBN</td>
-    <td>@oBook.BookClassification</td>
-    <td>@oBook.BookCategory</td>
-    <td>$@oBook.BookPrice</td>
-</tr>
+        <tr>
+            <td>@oBook.BookTitle</td>
+            <!--Display Author's first, middle, and last names in the same cell-->
+            <td>@oBook.BookAuthorFirstName @oBook.BookAuthorMiddleName @oBook.BookAuthorLastName</td>
+            <td>@oBook.BookPublisher</td>
+            <td>@oBook.BookISBN</td>
+            <td>@oBook.BookClassification</td>
+            <td>@oBook.BookCategory</td>
+            <td>$@oBook.BookPrice</td>
+        </tr>
     }
 
 </table>
