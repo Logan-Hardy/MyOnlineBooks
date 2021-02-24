@@ -6,6 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//Logan Hardy 
+//IS 413 
+//Assignment 6
+//24 Feb 2021
+
+//file used to seed data (hard code initial values) into database
 namespace MyOnlineBooks.Models
 {
     public class SeedData
@@ -35,6 +41,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-0451419439",
                         BookClassification = "Fiction",
                         BookCategory = "Classic",
+                        BookNumberOfPages = 1488,
                         BookPrice = 9.95
                     },
                     new Book
@@ -47,6 +54,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-0743270755",
                         BookClassification = "Non-Fiction",
                         BookCategory = "Biography",
+                        BookNumberOfPages = 944,
                         BookPrice = 14.58
                     },
                     new Book
@@ -58,6 +66,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-0553384611",
                         BookClassification = "Non-Fiction",
                         BookCategory = "Biography",
+                        BookNumberOfPages = 832,
                         BookPrice = 21.54
                     },
                     new Book
@@ -70,6 +79,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-0812981254",
                         BookClassification = "non-Fiction",
                         BookCategory = "Biography",
+                        BookNumberOfPages = 864,
                         BookPrice = 11.61
                     },
                     new Book
@@ -81,6 +91,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-0812974492",
                         BookClassification = "Non-Fiction",
                         BookCategory = "Historical",
+                        BookNumberOfPages = 528,
                         BookPrice = 13.33
                     },
                     new Book
@@ -92,6 +103,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-0804171281",
                         BookClassification = "Fiction",
                         BookCategory = "Historical Fiction",
+                        BookNumberOfPages = 288,
                         BookPrice = 15.95
                     },
                     new Book
@@ -103,6 +115,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-1455586691",
                         BookClassification = "Non-Fiction",
                         BookCategory = "Self-Help",
+                        BookNumberOfPages = 304,
                         BookPrice = 14.99
                     },
                     new Book
@@ -114,6 +127,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-1455523023",
                         BookClassification = "Non-Fiction",
                         BookCategory = "Self-Help",
+                        BookNumberOfPages = 240,
                         BookPrice = 21.66
                     },
                     new Book
@@ -125,6 +139,7 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-1591847984",
                         BookClassification = "Non-Fiction",
                         BookCategory = "Business",
+                        BookNumberOfPages = 400,
                         BookPrice = 29.16
                     },
                     new Book
@@ -136,8 +151,49 @@ namespace MyOnlineBooks.Models
                         BookISBN = "978-0553393613",
                         BookClassification = "Fiction",
                         BookCategory = "Thrillers",
+                        BookNumberOfPages = 642,
                         BookPrice = 15.03
+                    },
+                    new Book
+                    {
+                        BookTitle = "The Two Towers",
+                        BookAuthorFirstName = "J.",
+                        BookAuthorMiddleName = "R. R.",
+                        BookAuthorLastName = "Tolkein",
+                        BookPublisher = "Allen & Unwin",
+                        BookISBN = "978-0618002238",
+                        BookClassification = "Fiction",
+                        BookCategory = "Fantasy",
+                        BookNumberOfPages = 352,
+                        BookPrice = 5.71
+                    },
+                    new Book
+                    {
+                        BookTitle = "Chicka Chicka Boom Boom",
+                        BookAuthorFirstName = "John",
+                        BookAuthorLastName = "Archambault",
+                        BookPublisher = "Simon & Schuster Books for Young Readers",
+                        BookISBN = "978-1442438910",
+                        BookClassification = "Fiction",
+                        BookCategory = "Children",
+                        BookNumberOfPages = 40,
+                        BookPrice = 10.99
+                    },
+                    new Book
+                    {
+                        BookTitle = "The Hardy Boys: Hunting for Hidden Gold",
+                        BookAuthorFirstName = "Franklin",
+                        BookAuthorMiddleName = "W.",
+                        BookAuthorLastName = "Dixon",
+                        BookPublisher = "Gosset & Dunlap",
+                        BookISBN = "978-0448089058",
+                        BookClassification = "Fiction",
+                        BookCategory = "Mystery",
+                        BookNumberOfPages = 192,
+                        BookPrice = 8.99
                     }
+
+
 
                  );
 

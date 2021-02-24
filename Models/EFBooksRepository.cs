@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//Logan Hardy 
+//IS 413 
+//Assignment 6
+//24 Feb 2021
+
 namespace MyOnlineBooks.Models
 {
+    //Inherit from IBooksRepository
     public class EFBooksRepository : IBooksRepository
     {
         private OnlineBooksDBContext _context;

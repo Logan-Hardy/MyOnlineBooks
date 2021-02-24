@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyOnlineBooks.Models;
 
 namespace MyOnlineBooks.Migrations
 {
     [DbContext(typeof(OnlineBooksDBContext))]
-    partial class OnlineBooksDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210220213709_Logan")]
+    partial class Logan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
