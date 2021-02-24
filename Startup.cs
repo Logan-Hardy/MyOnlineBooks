@@ -58,17 +58,18 @@ namespace MyOnlineBooks
 
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     "pagination",
-                    //display urls as /P{pageNumber} (/P2, /P3)
+                    //display urls as /P1, /P2, /P3, etc. 
                     "P{page}",
                     new { Controller = "Home", action = "Index"});
                 endpoints.MapDefaultControllerRoute();
             });
 
-            //Seed data (list of 10 hardcoded books and their information) 
+            //Seed data (list of 13 hardcoded books and their information) 
             SeedData.EnsurePopulated(app);
         }
     }

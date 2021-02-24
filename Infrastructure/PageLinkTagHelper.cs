@@ -49,6 +49,7 @@ namespace MyOnlineBooks.Infrastructure
                 if (PageClassesEnabled)
                 {
                     tag.AddCssClass(PageClass);
+                    //shorthand if statement to highlight the selected page
                     tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
                 }
 

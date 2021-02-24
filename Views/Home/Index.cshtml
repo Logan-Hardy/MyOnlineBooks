@@ -36,8 +36,9 @@
             <p>Price:</p>
         </div>
     </div>
-    <hr />
+    <hr class="font-weight-bold"/>
     <br />
+    <!--Foreach loop to display information about each book on separate rows-->
     @foreach (var oBook in Model.Books)
     {
         <div class="p-0">
@@ -79,6 +80,5 @@
          page-class-normal="btn-outline-dark"
          page-class-selected="btn-info"
          class="btn-group pull-right m-1">
-
     </div>
 
