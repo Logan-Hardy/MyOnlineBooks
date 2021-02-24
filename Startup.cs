@@ -27,9 +27,9 @@ namespace MyOnlineBooks
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            
 
-            //this service is added, connection to the connection string that we created in DBContext class and the BookStoreConnection string connection created in appsettings.json            
+
+            //This service is added, connection to the connection string that we created in OnlineBooksDBContext class and the OnlineBooksConnection string connection created in appsettings.json            
             services.AddDbContext<OnlineBooksDBContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:OnlineBooksConnection"]);
@@ -61,8 +61,11 @@ namespace MyOnlineBooks
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    "pagination",
+                    //display urls as /P{pageNumber} (/P2, /P3)
+                    "P{page}",
+                    new { Controller = "Home", action = "Index"});
+                endpoints.MapDefaultControllerRoute();
             });
 
             //Seed data (list of 10 hardcoded books and their information) 

@@ -6,6 +6,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using MyOnlineBooks.Models.ViewModels;
+
+//Logan Hardy 
+//IS 413 
+//Assignment 6
+//24 Feb 2021
 
 namespace MyOnlineBooks.Controllers
 {
@@ -13,7 +19,8 @@ namespace MyOnlineBooks.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private IBooksRepository _repository; 
+        private IBooksRepository _repository;
+        public int PageSize = 5;
 
         public HomeController(ILogger<HomeController> logger, IBooksRepository repository)
         {
@@ -21,9 +28,25 @@ namespace MyOnlineBooks.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View(_repository.Books);
+            //Get everything within the return (could also be done beforehand)
+            return View(new BookListViewModel
+            {
+                //get book information, order by Book Price
+                Books = _repository.Books
+                    .OrderBy(b => b.BookPrice)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize)
+                    ,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = _repository.Books.Count()
+                }
+            });
+                
         }
 
         public IActionResult Privacy()

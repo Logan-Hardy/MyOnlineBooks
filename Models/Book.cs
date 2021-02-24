@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 //Logan Hardy 
 //IS 413 
-//Assignment 5
-//17 Feb 2021
+//Assignment 6
+//24 Feb 2021
 
 namespace MyOnlineBooks.Models
 {
@@ -37,6 +37,8 @@ namespace MyOnlineBooks.Models
         public string BookClassification { get; set; }
         [Required]
         public string BookCategory { get; set; }
+        [Required]
+        public int BookNumberOfPages { get; set; }
         [Required]
         public double BookPrice { get; set; }
 

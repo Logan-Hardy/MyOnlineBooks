@@ -1,45 +1,84 @@
 ﻿@{
-    //Logan Hardy 
-    //IS 413 
-    //Assignment 5
-    //17 Feb 2021
+    //Logan Hardy
+    //IS 413
+    //Assignment 6
+    //24 Feb 2021
+
     ViewBag.Title = "Welcome To Logan's Online Bookstore!";
 }
 
-@model IQueryable<Book>
-
-<!--Bootstrap is used to center and format the title of the page-->
-<div class="text-center">
-    <h1 class="display-4">@ViewBag.Title</h1>
+@model BookListViewModel
+<div class="bookInfo">
+    <!--Bootstrap used to change text to all caps/uppercase-->
+    <div class="row text-uppercase">
+        <div class="col-2">
+            <p>Title:</p>
+        </div>
+        <div class="col-2">
+            <p>Author's Name:</p>
+        </div>
+        <div class="col-1">
+            <p>Publisher:</p>
+        </div>
+        <div class="col-2">
+            <p>ISBN:</p>
+        </div>
+        <div class="col-1">
+            <p>Pages:</p>
+        </div>
+        <div class="col-2">
+            <p>Classification:</p>
+        </div>
+        <div class="col-1">
+            <p>Category:</p>
+        </div>
+        <div class="col-1">
+            <p>Price:</p>
+        </div>
+    </div>
+    <hr />
     <br />
-    <br />
-</div>
-<!--Bootstrap is used to add borders around the table and alternate stripes, or colors, for each row-->
-<table class="table table-bordered table-striped">
-    <tr>
-        <!--Table headers-->
-        <th>Title</th>
-        <th>Author's Name</th>
-        <th>Publisher</th>
-        <th>ISBN</th>
-        <th>Classification</th>
-        <th>Category</th>
-        <th>Price</th>
-    </tr>
-    <!--for each book, display the book information on a seperate row in the table -->
-    @foreach (var oBook in Model)
+    @foreach (var oBook in Model.Books)
     {
-        <tr>
-            <td>@oBook.BookTitle</td>
-            <!--Display Author's first, middle, and last names in the same cell-->
-            <td>@oBook.BookAuthorFirstName @oBook.BookAuthorMiddleName @oBook.BookAuthorLastName</td>
-            <td>@oBook.BookPublisher</td>
-            <td>@oBook.BookISBN</td>
-            <td>@oBook.BookClassification</td>
-            <td>@oBook.BookCategory</td>
-            <td>$@oBook.BookPrice</td>
-        </tr>
-    }
+        <div class="p-0">
+            <div class="row small">
+                <div class="col-2">
+                    <p>@oBook.BookTitle</p>
+                </div>
+                <div class="col-2">
+                    <p>@oBook.BookAuthorFirstName @oBook.BookAuthorMiddleName @oBook.BookAuthorLastName</p>
+                </div>
+                <div class="col-1">
+                    <p>@oBook.BookPublisher</p>
+                </div>
+                <div class="col-2">
+                    <p>@oBook.BookISBN</p>
+                </div>
+                <div class="col-1">
+                    <p>@oBook.BookNumberOfPages</p>
+                </div>
+                <div class="col-2">
+                    <p>@oBook.BookClassification</p>
+                </div>
+                <div class="col-1">
+                    <p>@oBook.BookCategory</p>
+                </div>
+                <!--Bootstrap used to change text color to green and bolded-->
+                <div class="col-1 text-success font-weight-bold">
+                    <p>$@oBook.BookPrice</p>
+                </div>
+            </div>
 
-</table>
+        </div>
+        <hr />
+    }
+</div>
+
+
+    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-info"
+         class="btn-group pull-right m-1">
+
+    </div>
 
