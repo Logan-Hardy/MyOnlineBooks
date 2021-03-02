@@ -8,77 +8,34 @@
 }
 
 @model BookListViewModel
+
 <div class="bookInfo">
     <!--Bootstrap used to change text to all caps/uppercase-->
-    <div class="row text-uppercase">
-        <div class="col-2">
-            <p>Title:</p>
-        </div>
-        <div class="col-2">
-            <p>Author's Name:</p>
-        </div>
-        <div class="col-1">
-            <p>Publisher:</p>
-        </div>
-        <div class="col-2">
-            <p>ISBN:</p>
-        </div>
-        <div class="col-1">
-            <p>Pages:</p>
-        </div>
-        <div class="col-2">
-            <p>Classification:</p>
-        </div>
-        <div class="col-1">
-            <p>Category:</p>
-        </div>
-        <div class="col-1">
-            <p>Price:</p>
-        </div>
-    </div>
-    <hr class="font-weight-bold"/>
-    <br />
-    <!--Foreach loop to display information about each book on separate rows-->
-    @foreach (var oBook in Model.Books)
-    {
-        <div class="p-0">
-            <div class="row small">
-                <div class="col-2">
-                    <p>@oBook.BookTitle</p>
-                </div>
-                <div class="col-2">
-                    <p>@oBook.BookAuthorFirstName @oBook.BookAuthorMiddleName @oBook.BookAuthorLastName</p>
-                </div>
-                <div class="col-1">
-                    <p>@oBook.BookPublisher</p>
-                </div>
-                <div class="col-2">
-                    <p>@oBook.BookISBN</p>
-                </div>
-                <div class="col-1">
-                    <p>@oBook.BookNumberOfPages</p>
-                </div>
-                <div class="col-2">
-                    <p>@oBook.BookClassification</p>
-                </div>
-                <div class="col-1">
-                    <p>@oBook.BookCategory</p>
-                </div>
-                <!--Bootstrap used to change text color to green and bolded-->
-                <div class="col-1 text-success font-weight-bold">
-                    <p>$@oBook.BookPrice</p>
-                </div>
-            </div>
-
-        </div>
-        <hr />
-    }
+    
+    <table class="table table-bordered table-striped">
+        <tr class="text-uppercase">
+            <th>Title</th>
+            <th>Author's Name</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Pages</th>
+            <th>Classification</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+        <!--Foreach loop to display information about each book on separate rows-->
+        @foreach (var oBook in Model.Books)
+        {
+            <partial name="BookSummary" model="oBook" />
+        }
+    </table>
+    
 </div>
 
-
-    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+    <div page-model="@Model.PagingInfo" page-action="Index" 
+         page-classes-enabled="true" page-class="btn"
          page-class-normal="btn-outline-dark"
-         page-class-selected="btn-info"
+         page-class-selected="btn btn-info" page-url-category="@Model.CurrentCategory"
          class="btn-group pull-right m-1">
     </div>
 

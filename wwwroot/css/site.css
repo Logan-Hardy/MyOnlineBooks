@@ -73,3 +73,28 @@ body {
 .bookInfo {
     font-size: 18px;
 }
+
+.db {
+    background-color: #1995AD;
+    color: white;
+}
+
+.medb {
+    background-color: #BCBABE;
+    color: white;
+}
+
+.softb {
+    background-color: #A1D6E2;
+    color: white;
+}
+
+.lightb {
+    background-color: #C4DFE6;
+}
+
+.btn-color {
+    background-color: #17a2b8;
+    color: white !important;
+}
+

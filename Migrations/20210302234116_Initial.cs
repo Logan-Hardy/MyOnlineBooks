@@ -11,7 +11,7 @@ namespace MyOnlineBooks.Migrations
                 columns: table => new
                 {
                     BookId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     BookTitle = table.Column<string>(nullable: false),
                     BookAuthorFirstName = table.Column<string>(nullable: false),
                     BookAuthorMiddleName = table.Column<string>(nullable: true),
@@ -20,6 +20,7 @@ namespace MyOnlineBooks.Migrations
                     BookISBN = table.Column<string>(maxLength: 14, nullable: false),
                     BookClassification = table.Column<string>(nullable: false),
                     BookCategory = table.Column<string>(nullable: false),
+                    BookNumberOfPages = table.Column<int>(nullable: false),
                     BookPrice = table.Column<double>(nullable: false)
                 },
                 constraints: table =>

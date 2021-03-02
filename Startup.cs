@@ -32,7 +32,7 @@ namespace MyOnlineBooks
             //This service is added, connection to the connection string that we created in OnlineBooksDBContext class and the OnlineBooksConnection string connection created in appsettings.json            
             services.AddDbContext<OnlineBooksDBContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:OnlineBooksConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:OnlineBooksConnection"]);
             });
 
             services.AddScoped<IBooksRepository, EFBooksRepository>();
@@ -62,10 +62,31 @@ namespace MyOnlineBooks
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    "categorypage",
+                    "{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
                     "pagination",
                     //display urls as /P1, /P2, /P3, etc. 
                     "P{page}",
-                    new { Controller = "Home", action = "Index"});
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    "page",
+                    "{page:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    "category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 }
+                    );
+
+                
+
                 endpoints.MapDefaultControllerRoute();
             });
 
