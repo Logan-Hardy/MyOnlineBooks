@@ -61,9 +61,16 @@ namespace MyOnlineBooks
 
             app.UseEndpoints(endpoints =>
             {
+                //Create Endpoints to make navigation in url easier and look neater 
                 endpoints.MapControllerRoute(
                     "categorypage",
                     "{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    "Bookcategorypage",
+                    "Books/{category}/{page:int}",
                     new { Controller = "Home", action = "Index" }
                     );
 
@@ -84,8 +91,6 @@ namespace MyOnlineBooks
                     "{category}",
                     new { Controller = "Home", action = "Index", page = 1 }
                     );
-
-                
 
                 endpoints.MapDefaultControllerRoute();
             });
