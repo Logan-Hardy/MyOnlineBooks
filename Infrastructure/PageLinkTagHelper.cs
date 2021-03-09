@@ -14,7 +14,7 @@ namespace MyOnlineBooks.Infrastructure
     [HtmlTargetElement("div", Attributes = "page-model")]
     public class PageLinkTagHelper : TagHelper
     {
-
+        //factory for creating asp.net core iurlhelper instance 
         private IUrlHelperFactory urlHelperFactory;
 
         //constructor
@@ -48,7 +48,7 @@ namespace MyOnlineBooks.Infrastructure
             {
                 TagBuilder tag = new TagBuilder("a");
 
-                PageUrlValues["page"] = i;
+                PageUrlValues["pageNum"] = i;
                 tag.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);
 
                 if (PageClassesEnabled)

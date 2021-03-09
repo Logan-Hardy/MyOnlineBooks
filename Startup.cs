@@ -36,6 +36,12 @@ namespace MyOnlineBooks
             });
 
             services.AddScoped<IBooksRepository, EFBooksRepository>();
+
+            services.AddRazorPages();
+
+            //helps with retaining items in cart in cache/session
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,10 +49,12 @@ namespace MyOnlineBooks
         {
             if (env.IsDevelopment())
             {
+                //Helpful error page, but ugly 
                 app.UseDeveloperExceptionPage();
             }
             else
             {
+                //Better error page for users 
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -54,45 +62,50 @@ namespace MyOnlineBooks
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
 
 
+            //Based on a URL, what is going to happen 
             app.UseEndpoints(endpoints =>
             {
                 //Create Endpoints to make navigation in url easier and look neater 
                 endpoints.MapControllerRoute(
                     "categorypage",
-                    "{category}/{page:int}",
+                    "{category}/{pageNum:int}",
                     new { Controller = "Home", action = "Index" }
                     );
 
                 endpoints.MapControllerRoute(
                     "Bookcategorypage",
-                    "Books/{category}/{page:int}",
+                    "Books/{category}/{pageNum:int}",
                     new { Controller = "Home", action = "Index" }
                     );
 
                 endpoints.MapControllerRoute(
                     "pagination",
                     //display urls as /P1, /P2, /P3, etc. 
-                    "P{page}",
+                    "P{pageNum}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute(
-                    "page",
-                    "{page:int}",
+                    "pageNum",
+                    "{pageNum:int}",
                     new { Controller = "Home", action = "Index" }
                     );
 
                 endpoints.MapControllerRoute(
                     "category",
                     "{category}",
-                    new { Controller = "Home", action = "Index", page = 1 }
+                    new { Controller = "Home", action = "Index", pageNum = 1 }
                     );
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
 
             //Seed data (list of 13 hardcoded books and their information) 

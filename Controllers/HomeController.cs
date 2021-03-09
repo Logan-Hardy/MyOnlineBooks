@@ -29,7 +29,7 @@ namespace MyOnlineBooks.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             //Get everything within the return (could also be done beforehand)
             return View(new BookListViewModel
@@ -38,12 +38,12 @@ namespace MyOnlineBooks.Controllers
                 Books = _repository.Books
                     .Where(b => category == null || b.BookCategory == category)
                     .OrderBy(b => b.BookPrice)
-                    .Skip((page - 1) * PageSize)
+                    .Skip((pageNum - 1) * PageSize)
                     .Take(PageSize)
                     ,
                 PagingInfo = new PagingInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = pageNum,
                     ItemsPerPage = PageSize,
                     TotalNumItems = category == null ? _repository.Books.Count() : 
                         _repository.Books.Where(x => x.BookCategory == category).Count()

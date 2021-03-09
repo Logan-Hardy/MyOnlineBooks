@@ -11,8 +11,10 @@ namespace MyOnlineBooks
 {
     public class Program
     {
+        //start of program 
         public static void Main(string[] args)
         {
+            //call CreateHostBuilder bellow
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -20,6 +22,7 @@ namespace MyOnlineBooks
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //call startup file
                     webBuilder.UseStartup<Startup>();
                 });
     }
