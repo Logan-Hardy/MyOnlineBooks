@@ -22,16 +22,22 @@ namespace MyOnlineBooks.Models
         }
         [JsonIgnore]
         public ISession Session { get; set; }
+        
+        //Add to session
         public override void AddItem(Book book, int quantity)
         {
             base.AddItem(book, quantity);
             Session.SetJson("Cart", this);
         }
+
+        //Remove from session
         public override void RemoveLine(Book book)
         {
             base.RemoveLine(book);
             Session.SetJson("Cart", this);
         }
+
+        //Remove cart from session
         public override void Clear()
         {
             base.Clear();
