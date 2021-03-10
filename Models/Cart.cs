@@ -9,7 +9,7 @@ namespace MyOnlineBooks.Models
     {
         public List<CartLine> Lines { get; set; } = new List<CartLine>();
 
-        public void AddItem (Book bk, int qty)
+        public virtual void AddItem (Book bk, int qty)
         {
             CartLine line = Lines
                 .Where(b => b.Book.BookId == bk.BookId)
@@ -29,10 +29,10 @@ namespace MyOnlineBooks.Models
             }
         }
 
-        public void RemoveLine(Book bk) =>
+        public virtual void RemoveLine(Book bk) =>
             Lines.RemoveAll(x => x.Book.BookId == bk.BookId);
 
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
 
         public double ComputeTotalSum()
         {
