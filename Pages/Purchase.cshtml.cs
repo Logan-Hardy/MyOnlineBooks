@@ -11,10 +11,10 @@ namespace MyOnlineBooks.Pages
 {
     public class PurchaseModel : PageModel
     {
-        private IBooksRepository repository; 
+        private IBooksRepository repository;
 
         //Constructor 
-        public PurchaseModel (IBooksRepository repo, Cart cartServices)
+        public PurchaseModel(IBooksRepository repo, Cart cartServices)
         {
             repository = repo;
             Cart = cartServices;
@@ -28,23 +28,25 @@ namespace MyOnlineBooks.Pages
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
-            //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+
         }
 
+        //Add book to cart
         public IActionResult OnPost(long bookId, string returnUrl)
         {
             Book book = repository.Books.FirstOrDefault(b => b.BookId == bookId);
 
-            //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
-
+            //add selected book to cart
             Cart.AddItem(book, 1);
-            //HttpContext.Session.SetJson("cart", Cart);
+
 
             return RedirectToPage(new { returnUrl = returnUrl });
         }
 
+        //Remove book from cart
         public IActionResult OnPostRemove(long bookid, string returnUrl)
         {
+            //remove selected book info from cart 
             Cart.RemoveLine(Cart.Lines.First(cl =>
                 cl.Book.BookId == bookid).Book);
             return RedirectToPage(new { returnUrl = returnUrl });
