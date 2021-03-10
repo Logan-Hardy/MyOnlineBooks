@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -32,10 +33,19 @@ namespace MyOnlineBooks
             //This service is added, connection to the connection string that we created in OnlineBooksDBContext class and the OnlineBooksConnection string connection created in appsettings.json            
             services.AddDbContext<OnlineBooksDBContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:OnlineBooksConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:OnlineBooksConnection"]);
             });
 
             services.AddScoped<IBooksRepository, EFBooksRepository>();
+
+            services.AddRazorPages();
+
+            //helps with retaining items in cart in cache/session
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,10 +53,12 @@ namespace MyOnlineBooks
         {
             if (env.IsDevelopment())
             {
+                //Helpful error page, but ugly 
                 app.UseDeveloperExceptionPage();
             }
             else
             {
+                //Better error page for users 
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -54,19 +66,57 @@ namespace MyOnlineBooks
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
 
+            //Cross-Site-Scripting (Xss) protection
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Xss-Protection", "1");
+                await next();
+            });
 
+
+            //Based on a URL, what is going to happen 
             app.UseEndpoints(endpoints =>
             {
+                //Create Endpoints to make navigation in url easier and look neater 
+                endpoints.MapControllerRoute(
+                    "categorypage",
+                    "{category}/{pageNum:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    "Bookcategorypage",
+                    "Books/{category}/{pageNum:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
                 endpoints.MapControllerRoute(
                     "pagination",
                     //display urls as /P1, /P2, /P3, etc. 
-                    "P{page}",
-                    new { Controller = "Home", action = "Index"});
+                    "P{pageNum}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    "pageNum",
+                    "{pageNum:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    "category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", pageNum = 1 }
+                    );
+
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
 
             //Seed data (list of 13 hardcoded books and their information) 

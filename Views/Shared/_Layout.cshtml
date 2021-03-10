@@ -6,50 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MyOnlineBooks</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<!--light colored background-->
-<body class="bg-light">
+<body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <!--Navbar Header-->
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddBook">Add Book</a>
-                    </li>
-                </ul>
+        <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 btn-color">-->
+        <!--Navbar Header-->
+        <!--<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddBook">Add Book</a>
+                </li>
+            </ul>
+            <div class="text-right">
+                <vc:cart-summary />
             </div>
-        </nav>
+        </div>
+    </nav>-->
+        <div class="bg-dark text-white p-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col navbar-brand">Logan's Bookstore</div>
+                    <div class="col-6 text-right">
+                        <vc:cart-summary />
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
+    <!--Bootstrap is used to center and format the title of the page-->
+    <div class="text-center">
+        <h1 class="display-4">Welcome To Logan's Online Bookstore!</h1>
+    </div>
+    <br />
+    <br />
     <!--Bootstrap used for margins-->
     <div class="m-4">
-        <!--Bootstrap is used to center and format the title of the page-->
-        <div class="text-center">
-            <h1 class="display-4">Welcome To Logan's Online Bookstore!</h1>
-            <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
-            <span class="sr-only">Refreshing...</span>
-            <br />
-            <br />
-        </div>
         <!--Bootstrap used to create two sections of columns, size 10 and size 2-->
         <div class="row">
-            <div id="bookInfo" class="col-10">
-                @RenderBody()
-            </div>
             <div id="about" class="col-2">
                 <!--Bootstrap used to create card outline for about section with a little padding, small text and light colored background-->
                 <div class="card card-outline-primary p-1 small bg-light">
+                    <vc:navigation-menu />
+                    <br />
                     <h1 class="text-center">About</h1>
-                    <p>
-                        Logan's Online Bookstore was first created as a project for an ASP.NET CORE course, IS 413, at Brigham Young University.
-                        It has since grown an enormous following of 1 Professor, 2-3 TA's, and countless students who have too much free time!
-                    </p>
-                    <p>Now, the mission is to supply the world with wonderful books for everyone to read.</p>
-                    <p>Feel free to Venmo me for a lead on a good book to read!</p>
+                    <div class="p-2">
+                        <p>
+                            Logan's Online Bookstore was first created as a project for an ASP.NET CORE course, IS 413, at Brigham Young University.
+                            It has since grown an enormous following of 1 Professor, 2-3 TA's, and countless students who have too much free time!
+                        </p>
+                        <p>Now, the mission is to supply the world with wonderful books for everyone to read.</p>
+                        <p>Feel free to donate to the cause!</p>
+                    </div>
                     <img src="~/Venmo.jpg" />
 
                     <!--Bootstrap used to create a hidden item that is displayed when button is clicked-->
@@ -61,17 +73,21 @@
                     </div>
                 </div>
             </div>
+            <div id="bookInfo" class="col-10">
+                @RenderBody()
+            </div>
         </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - MyOnlineBooks - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="bg-dark text-white p-5">
+        <div class="container-fluid">
+            &copy; 2021 - Logan's Book Store - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    
+    
 </body>
 </html>

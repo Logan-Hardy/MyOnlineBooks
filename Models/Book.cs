@@ -42,5 +42,6 @@ namespace MyOnlineBooks.Models
         [Required]
         public double BookPrice { get; set; }
 
+        public string myName; 
     }
 }
